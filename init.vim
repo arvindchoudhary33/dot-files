@@ -5,9 +5,6 @@ set scrolloff=10
 set nu
 " tabs are shown with \"periods\"
 set list lcs=tab:\.\
-" to fold text ( hide text ) 
-" zf to create fold, zc to close, zo to open, zd to delete fold
-set foldmethod=manual
 set ignorecase
 set relativenumber
 set tabstop=1 softtabstop=1
@@ -23,6 +20,7 @@ set sidescroll=1
 set mouse =a
 "  to unset mouse selection : set mouse-=a
 " Cursor
+
 set guicursor=n-v-c:block-Cursor
 set guicursor+=i:ver100-iCursor
 set guicursor+=n-v-c:blinkon0
@@ -112,15 +110,7 @@ autocmd VimEnter * wincmd p
 " to close nertree if last file is closed 
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-" to make and load the view for folds 
-"FOLDS:
-"------
-" Automatically save folds
-augroup AutoSaveFolds
-  autocmd!
-  au BufWinLeave ?* mkview 1
-  au BufWinEnter ?* silent! loadview 1
-augroup END
+"
 " highlighting for git files in nerd tree 
 let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ "Modified"  : "✹",
