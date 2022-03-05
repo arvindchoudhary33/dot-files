@@ -1,5 +1,5 @@
 syntax on
- 
+   
 " All set commands
 set scrolloff=10
 set nu
