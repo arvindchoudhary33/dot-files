@@ -17,10 +17,9 @@ set path+=**
 set wildignore+=**/node_modules/**
 set wildmenu
 set sidescroll=1
-set mouse =a
+set mouse=a
 "  to unset mouse selection : set mouse-=a
 " Cursor
-
 set guicursor=n-v-c:block-Cursor
 set guicursor+=i:ver100-iCursor
 set guicursor+=n-v-c:blinkon0

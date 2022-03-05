@@ -10,6 +10,7 @@ export EDITOR='nvim'
 # --preview='bat --color=always --style=numbers'
 export BAT_THEME="gruvbox-dark"
 alias pf="fzf --preview='bat --color=always --style=numbers  {}' --bind shift-up:preview-page-up,shift-down:preview-page-down"
+alias fzf="fzf --preview='bat --color=always --style=numbers  {}' --bind shift-up:preview-page-up,shift-down:preview-page-down"
 export FZF_DEFAULT_COMMAND="fd --type f"
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -112,3 +113,4 @@ alias cl='clear'
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+export PATH="/usr/local/sbin:$PATH"
