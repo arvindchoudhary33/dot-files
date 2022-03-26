@@ -1,6 +1,4 @@
 
-
-
 " set commands
 
 " no conitnuation of comment on next line:
@@ -22,7 +20,9 @@ hi Normal guibg=NONE ctermbg=NONE
 
 " does not highlight the searched text
 set nohlsearch
+" ignore case while searching
 
+set ignorecase
 
 call plug#begin("~/.vim/plugged")
 "  Plug 'dracula/vim'
@@ -49,12 +49,12 @@ call plug#begin("~/.vim/plugged")
   Plug 'yuezk/vim-js'
   Plug 'maxmellon/vim-jsx-pretty'
   Plug 'ap/vim-css-color'
-
+  Plug 'sheerun/vim-polyglot'
 call plug#end()
 
 
 
-let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-pairs'] 
+let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-pairs', 'coc-vimtex'] 
 
 " For the theme
 if (has("termguicolors"))
@@ -185,5 +185,11 @@ let g:closetag_shortcut = '>'
 " Add > at current position without closing the current tag, default is ''
 "
 let g:closetag_close_shortcut = '<leader>>'
+
+
+
+
+" To disable continuation of comment
+autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
 
 

@@ -7,6 +7,7 @@ alias vim='nvim'
 alias vi='nvim'
 alias lst='exa --icons --long --tree --level=2 --git'
 export EDITOR='nvim'
+alias jj='jupyter notebook'
 # --preview='bat --color=always --style=numbers'
 export BAT_THEME="gruvbox-dark"
 alias pf="fzf --preview='bat --color=always --style=numbers  {}' --bind shift-up:preview-page-up,shift-down:preview-page-down"
@@ -86,6 +87,7 @@ plugins=(git zsh-autosuggestions vi-mode z)
 
 source $ZSH/oh-my-zsh.sh
 alias ls='exa --icons --long --git'
+alias la='exa --icons --long --git --all'
 alias p='python3'
 alias cl='clear'
 # User configuration
@@ -114,3 +116,5 @@ alias cl='clear'
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 export PATH="/usr/local/sbin:$PATH"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
