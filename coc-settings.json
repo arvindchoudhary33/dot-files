@@ -1,0 +1,16 @@
+{
+"pairs.enableCharacters":["(","[","{","'","\"", "`"],
+	"suggest.noselect":false,
+ 
+	"coc.preferences.formatOnSaveFiletypes":[
+	"javascript",
+	"typescript",
+	"json",
+	"javascriptreact",
+	"typescript.tsx",
+  "vim"	,
+	"css",
+	"scss",
+	"html"
+	]
+}
