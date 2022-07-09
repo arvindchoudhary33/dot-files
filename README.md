@@ -5,6 +5,7 @@
 ![ nvim ](./images/2.png)
 ![ fzf iterm2 ](./images/3.png)
 
+
 ---
 ## System 
 - [MacOS Big Sur](https://apps.apple.com/us/app/macos-big-sur/id1526878132?mt=12)   _version 11.6.5_
