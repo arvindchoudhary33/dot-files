@@ -1,5 +1,5 @@
-# Dillinger
-## _The Last Markdown Editor, Ever_
+# Personal dot files
+---
 
 ![fzf nvim](./images/1.png)
 ![ nvim ](./images/2.png)
