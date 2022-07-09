@@ -1,6 +1,7 @@
  
 " set commands
 
+
 " no conitnuation of comment on next line:
 set formatoptions-=cro
 
@@ -14,7 +15,7 @@ set smartindent
 " enables mouse selection invim
 set mouse=a " to disable set mouse-=a
 
-
+autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
 " To have a transparent background
 hi Normal guibg=NONE ctermbg=NONE
 
@@ -50,8 +51,23 @@ call plug#begin("~/.vim/plugged")
   Plug 'maxmellon/vim-jsx-pretty'
   Plug 'ap/vim-css-color'
   Plug 'sheerun/vim-polyglot'
+
+
+  "  for highlight todo, hack in the comments 
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'folke/todo-comments.nvim'
+
 call plug#end()
 
+
+" for todo-comments plugin
+lua << EOF
+  require("todo-comments").setup {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+  }
+EOF
 
 
 let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-pairs', 'coc-vimtex'] 
@@ -111,14 +127,14 @@ nnoremap <C-k> <C-w>k
 
 " to move between tabs
 noremap <leader>1 1gt
-
 noremap <leader>2 2gt
 noremap <leader>3 3gt
-
+noremap <leader>4 4gt
 
 " fzf settings
 nnoremap <C-p> :FZF<CR>
 nnoremap <leader>ff :Files<CR>
+nnoremap <silent> <Leader>f :Ag<CR>
 
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
@@ -191,5 +207,6 @@ let g:closetag_close_shortcut = '<leader>>'
 
 " To disable continuation of comment
 autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
+
 
 

@@ -3,9 +3,12 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
+# just add the youtube link without quotes at the end to download the song
+alias yd='youtube-dl -f bestaudio --extract-audio --audio-format mp3 --audio-quality 0'
+alias mongostart='brew services start mongodb/brew/mongodb-community'
+alias mongostop='brew services stop mongodb/brew/mongodb-community'
 alias vim='nvim'
 alias vi='nvim'
-alias lst='exa --icons --long --tree --level=2 --git'
 export EDITOR='nvim'
 alias jj='jupyter notebook'
 # --preview='bat --color=always --style=numbers'
@@ -86,9 +89,11 @@ ZSH_THEME="robbyrussell"
 plugins=(git zsh-autosuggestions vi-mode z)
 
 source $ZSH/oh-my-zsh.sh
-alias ls='exa --icons --long --git'
+# alias ls='exa --icons --long --git'
+alias ll='exa --icons --long --tree --level=2 --git'
 alias la='exa --icons --long --git --all'
-alias p='python3'
+alias ls='exa --icons --long --git'
+# alias p='python3'
 alias cl='clear'
 # User configuration
 
@@ -118,3 +123,4 @@ alias cl='clear'
 export PATH="/usr/local/sbin:$PATH"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
