@@ -4,7 +4,7 @@
 ![fzf nvim](./images/1.png)
 ![nvim](./images/2.png)
 ![fzf iterm2](./images/4.png)
-![fzf iterm2](./images/3.png)
+![fzf iterm2](./images/3 .png)
 
 
 
