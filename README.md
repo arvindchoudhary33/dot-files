@@ -2,8 +2,11 @@
 ---
 
 ![fzf nvim](./images/1.png)
+---
 ![nvim](./images/2.png)
+---
 ![fzf iterm2](./images/4.png)
+---
 ![fzf iterm2](./images/3.png)
 
 
@@ -27,8 +30,6 @@
 - iterm2/mac [homebrew](https://brew.sh/)
 - nvim [Plug](https://github.com/junegunn/vim-plug)
  
-## How to use 
-_I, myself had/have hardtime figuring out a better working environment. So depending on your needs you can find the plugins to use provided in the init.vim ( with comments specifying their usage ) & .zshrc file.If you have any doubts/problems related to any plugin mentioned in the file, you can contact me through mail provided_
+## Special mention
+_Gruvvvvvvbox is the best ( personal opinion )_
 
-## Contact 
- arvindchoudhary.in.connect@gmail.com
