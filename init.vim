@@ -1,10 +1,13 @@
- 
 " set commands
 
+" syntax on
 
 " no conitnuation of comment on next line:
 set formatoptions-=cro
 
+" won't show insert | visual | normal mode at bottom
+" left
+set noshowmode
 " show line numbers
 set nu
 " relative numbers
@@ -13,23 +16,35 @@ set rnu
 set smartindent
 
 " enables mouse selection invim
+
 set mouse=a " to disable set mouse-=a
 
-autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
-" To have a transparent background
-hi Normal guibg=NONE ctermbg=NONE
+" background transparent
+" autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
 
 " does not highlight the searched text
 set nohlsearch
-" ignore case while searching
 
+" ignore case while searching
 set ignorecase
 
+" Re-mapping ESC to jf
+inoremap jf <Esc>
 call plug#begin("~/.vim/plugged")
-"  Plug 'dracula/vim'
+
+  " Themes 
+  Plug 'sonph/onehalf', { 'rtp': 'vim' }
+  Plug 'joshdick/onedark.vim'
+  Plug 'NLKNguyen/papercolor-theme'
+  Plug 'rakr/vim-one'
+  Plug 'kyoz/purify', { 'rtp': 'vim' }
+  Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+  Plug 'sainnhe/gruvbox-material'
+  Plug 'EdenEast/nightfox.nvim'
   Plug 'gruvbox-community/gruvbox'
-  Plug 'scrooloose/nerdtree'
-  Plug 'ryanoasis/vim-devicons'
+
+  " Plug 'scrooloose/nerdtree'
+  " Plug 'ryanoasis/vim-devicons'
   "fzf ( fuzzy finder )
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
@@ -37,25 +52,30 @@ call plug#begin("~/.vim/plugged")
   Plug 'vim-scripts/bats.vim'
   " for auto completion in nvim 
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  Plug 'leafgarland/typescript-vim'
-  Plug 'peitalin/vim-jsx-typescript'
 
   " working with tags
   Plug 'alvan/vim-closetag'
   Plug 'tpope/vim-surround'
-
+" Alternative to airline
+ Plug 'itchyny/lightline.vim'
   " for commenting
   Plug 'tpope/vim-commentary'
   "  js syntax highlighting
-  Plug 'yuezk/vim-js'
-  Plug 'maxmellon/vim-jsx-pretty'
+  " Plug 'yuezk/vim-js'
+  " Plug 'maxmellon/vim-jsx-pretty'
   Plug 'ap/vim-css-color'
   Plug 'sheerun/vim-polyglot'
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 
   "  for highlight todo, hack in the comments 
   Plug 'nvim-lua/plenary.nvim'
   Plug 'folke/todo-comments.nvim'
+
+ " git plugin for vim
+ Plug 'tpope/vim-fugitive'
+
+ Plug 'preservim/nerdtree'
 
 call plug#end()
 
@@ -70,32 +90,39 @@ lua << EOF
 EOF
 
 
-let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-pairs', 'coc-vimtex'] 
+let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-pairs'] 
 
 " For the theme
 if (has("termguicolors"))
  set termguicolors
 endif
 syntax enable
+" set background=light
+" onehalf onedark papercolor ( bg light )  one purify tokyonight nightfox gruvbox gruvbox-material
 colorscheme gruvbox
 
+" set background=light
 
-" For the nerdTree
+
+" " For the nerdTree
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeIgnore = []
 let g:NERDTreeStatusline = ''
-" Automaticaly close nvim if NERDTree is only thing left open
+" " Automaticaly close nvim if NERDTree is only thing left open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " Toggle
 nnoremap <silent> <leader>g :NERDTreeToggle<CR>
 " nerdTree window size
-let g:NERDTreeWinSize=52
+let g:NERDTreeWinSize=60
+"Automatically start nerdTree when vim starts
+autocmd VimEnter * NERDTree
+
 
 " bug : square brackets after sourcing the init.vim
-if exists('g:loaded_webdevicons')
-    call webdevicons#refresh()
-endif
+" if exists('g:loaded_webdevicons')
+"     call webdevicons#refresh()
+" endif
 
 
 
@@ -184,29 +211,25 @@ let g:closetag_xhtml_filetypes = 'xhtml,jsx,js'
 "
 let g:closetag_emptyTags_caseSensitive = 1
 
-" dict
-" Disables auto-close if not in a "valid" region (based on filetype)
-"
-let g:closetag_regions = {
-    \ 'typescript.tsx': 'jsxRegion,tsxRegion',
-    \ 'javascript.jsx': 'jsxRegion',
-    \ 'typescriptreact': 'jsxRegion,tsxRegion',
-    \ 'javascriptreact': 'jsxRegion',
-    \ }
-
-" Shortcut for closing tags, default is '>'
-"
-let g:closetag_shortcut = '>'
-
-" Add > at current position without closing the current tag, default is ''
-"
-let g:closetag_close_shortcut = '<leader>>'
+" Dealing with buffers
+" to show buffer tab number at top
+" tab-shift to move between buffers
+nnoremap  <silent>   <tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bnext<CR>
+nnoremap  <silent> <s-tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bprevious<CR>
 
 
 
+" Lightline configurations
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'FugitiveHead'
+      \ },
+      \ }
 
-" To disable continuation of comment
-autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
 
-
-
+" Vim fugitive maps
