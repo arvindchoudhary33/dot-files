@@ -1,16 +1,18 @@
 {
-"pairs.enableCharacters":["(","[","{","'","\"", "`"],
-	"suggest.noselect":false,
- 
-	"coc.preferences.formatOnSaveFiletypes":[
-	"javascript",
-	"typescript",
-	"json",
-	"javascriptreact",
-	"typescript.tsx",
-  "vim"	,
-	"css",
-	"scss",
-	"html"
-	]
+  "pairs.enableCharacters": ["(", "[", "{", "'", "\"", "`"],
+  "suggest.noselect": false,
+  "javascript.suggestionActions.enabled": false,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "html",
+    "javascript",
+    "typescript",
+    "json",
+    "javascriptreact",
+    "typescript.tsx",
+    "css",
+    "scss",
+    "vim",
+    "typescript",
+    "typescriptreact"
+  ]
 }

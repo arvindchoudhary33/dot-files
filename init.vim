@@ -1,10 +1,8 @@
 " set commands
-
-" syntax on
+syntax on
 
 " no conitnuation of comment on next line:
-set formatoptions-=cro
-
+autocmd FileType * set formatoptions-=cro
 " won't show insert | visual | normal mode at bottom
 " left
 set noshowmode
@@ -12,7 +10,6 @@ set noshowmode
 set nu
 " relative numbers
 set rnu
-
 set smartindent
 
 " enables mouse selection invim
@@ -20,7 +17,7 @@ set smartindent
 set mouse=a " to disable set mouse-=a
 
 " background transparent
-" autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
+autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
 
 " does not highlight the searched text
 set nohlsearch
@@ -33,6 +30,8 @@ inoremap jf <Esc>
 call plug#begin("~/.vim/plugged")
 
   " Themes 
+  Plug 'haishanh/night-owl.vim'
+  Plug 'junegunn/seoul256.vim'
   Plug 'sonph/onehalf', { 'rtp': 'vim' }
   Plug 'joshdick/onedark.vim'
   Plug 'NLKNguyen/papercolor-theme'
@@ -42,7 +41,7 @@ call plug#begin("~/.vim/plugged")
   Plug 'sainnhe/gruvbox-material'
   Plug 'EdenEast/nightfox.nvim'
   Plug 'gruvbox-community/gruvbox'
-
+  Plug 'overcache/NeoSolarized'
   " Plug 'scrooloose/nerdtree'
   " Plug 'ryanoasis/vim-devicons'
   "fzf ( fuzzy finder )
@@ -76,7 +75,8 @@ call plug#begin("~/.vim/plugged")
  Plug 'tpope/vim-fugitive'
 
  Plug 'preservim/nerdtree'
-
+ " For transparent background
+ Plug 'tribela/vim-transparent'
 call plug#end()
 
 
@@ -97,10 +97,25 @@ if (has("termguicolors"))
  set termguicolors
 endif
 syntax enable
-" set background=light
-" onehalf onedark papercolor ( bg light )  one purify tokyonight nightfox gruvbox gruvbox-material
-colorscheme gruvbox
 
+" seoul256 (dark):
+"   Range:   233 (darkest) ~ 239 (lightest)
+"   Default: 237
+
+" let g:seoul256_background = 233
+" colo seoul256
+
+" seoul256 (light):
+"   Range:   252 (darkest) ~ 256 (lightest)
+"   Default: 253
+" let g:seoul256_background = 256
+" colo seoul256
+
+" onehalf onedark papercolor ( bg light )  one purify tokyonight nightfox gruvbox gruvbox-material NeoSolarized nightowl
+"
+colorscheme NeoSolarized 
+
+set background=dark
 " set background=light
 
 
@@ -114,7 +129,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " Toggle
 nnoremap <silent> <leader>g :NERDTreeToggle<CR>
 " nerdTree window size
-let g:NERDTreeWinSize=60
+let g:NERDTreeWinSize=53
 "Automatically start nerdTree when vim starts
 autocmd VimEnter * NERDTree
 
@@ -159,6 +174,10 @@ noremap <leader>3 3gt
 noremap <leader>4 4gt
 
 " fzf settings
+" fzf preview window theme
+" themes can be found ( bat --list-themes ) in the term
+" directly ( the name should be exactly same)
+let $BAT_THEME='Solarized (dark)'
 nnoremap <C-p> :FZF<CR>
 nnoremap <leader>ff :Files<CR>
 nnoremap <silent> <Leader>f :Ag<CR>
@@ -220,8 +239,10 @@ nnoremap  <silent> <s-tab>  :if &modifiable && !&readonly && &modified <CR> :wri
 
 
 " Lightline configurations
+" Available colorscheme for lightline
+" https://github.com/itchyny/lightline.vim/blob/master/colorscheme.md
 let g:lightline = {
-      \ 'colorscheme': 'wombat',
+      \ 'colorscheme': 'Tomorrow_Night_Eighties',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
@@ -233,3 +254,11 @@ let g:lightline = {
 
 
 " Vim fugitive maps
+
+
+" current line number color 
+hi CursorLineNr guifg=#d33682
+set cursorline
+set cursorlineopt=number
+
+
